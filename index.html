@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Un Regalito Especial 💛</title>
+  <title>Regalito para Nanis 💛</title>
   <style>
     * {
       box-sizing: border-box;
@@ -47,7 +47,7 @@
       top: 15px;
       right: 15px;
       z-index: 1000;
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.9);
       padding: 8px 12px;
       border-radius: 20px;
       border: 1px solid #F5D061;
@@ -59,7 +59,7 @@
 
     audio {
       height: 30px;
-      max-width: 180px;
+      max-width: 170px;
     }
 
     /* PANTALLA 1 */
@@ -67,15 +67,17 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 20px;
-      padding: 20px;
+      gap: 25px;
+      padding: 25px;
       animation: fadeIn 1s ease-in-out;
       z-index: 2;
+      max-width: 90%;
     }
 
     h1 {
-      font-size: 2rem;
+      font-size: 1.8rem;
       color: #7A6B32;
+      line-height: 1.4;
     }
 
     .btn-container {
@@ -221,13 +223,12 @@
       align-items: center;
     }
 
-    /* Ramos decorativos */
     .decor-bouquets {
       display: flex;
       justify-content: space-around;
       width: 100%;
       font-size: 3rem;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
     }
 
     .bouquets-grid {
@@ -298,19 +299,23 @@
 </head>
 <body>
 
-  <!-- Reproductor de Audio -->
+  <!-- Reproductor de Audio (Laufey - From The Start) -->
   <div class="audio-container">
     <span>🎵</span>
-    <audio controls loop id="bgAudio">
-      <!-- Reemplaza 'cancion.mp3' por el nombre de tu archivo de música subido a GitHub -->
+    <audio controls loop id="bgAudio" preload="auto" playsinline>
+      <!-- Opción 1: Tu archivo subido a GitHub (Asegúrate que el nombre en GitHub coincida) -->
+      <source src="From The Start.mp3" type="audio/mpeg">
+      <source src="from-the-start.mp3" type="audio/mpeg">
       <source src="cancion.mp3" type="audio/mpeg">
+      <!-- Opción 2: Respaldo online de la canción Laufey - From The Start -->
+      <source src="https://audio.com/starryyy/audio/from-the-start" type="audio/mpeg">
       Tu navegador no soporta el reproductor.
     </audio>
   </div>
 
   <!-- PANTALLA 1 -->
   <div id="step1">
-    <h1>¿Quieres ver tu regalito linda? 💛</h1>
+    <h1>¿Quieres ver el regalito que te hice mi Nanis? 🫶🏻🫶🏻🫶🏻</h1>
     <div class="btn-container">
       <button class="btn" onclick="startExperience()">Sí quieroo</button>
       <button class="btn" onclick="startExperience()">Obvio que sí</button>
@@ -331,7 +336,6 @@
     <div id="planet" class="transform-container">🌍</div>
 
     <div class="interactive-section">
-      <!-- Ramos a los lados / arriba de las flores -->
       <div class="decor-bouquets">
         <span title="Ramo de Girasoles">🌻💐</span>
         <span title="Ramo de Flores Amarillas">💐🌼</span>
@@ -395,9 +399,15 @@
     }
 
     function startExperience() {
-      // Iniciar música al presionar el botón
+      // Activa y reproduce el audio inmediatamente tras presionar el botón de inicio
       const audio = document.getElementById('bgAudio');
-      audio.play().catch(() => console.log("El navegador requiere interacción manual para reproducir audio."));
+      if (audio) {
+        audio.play().then(() => {
+          console.log("Audio reproduciéndose perfectamente");
+        }).catch((err) => {
+          console.log("Error de reproducción automática, intentando de nuevo:", err);
+        });
+      }
 
       document.getElementById('step1').style.display = 'none';
       document.getElementById('step2').style.display = 'flex';
@@ -413,7 +423,7 @@
       for (let i = 0; i < totalFlowers; i++) {
         const flower = document.createElement('span');
         flower.className = 'heart-flower';
-        flower.innerHTML = icons[i % 2]; // Alterna entre flor amarilla y girasol
+        flower.innerHTML = icons[i % 2];
 
         const t = (Math.PI * 2 / totalFlowers) * i;
         const x = 16 * Math.pow(Math.sin(t), 3);
@@ -466,11 +476,9 @@
       }, 500);
     }
 
-    // Revelar el mensaje al dar clic a cada flor
     function revealMessage(element) {
       element.classList.add('revealed');
     }
   </script>
 </body>
 </html>
-
