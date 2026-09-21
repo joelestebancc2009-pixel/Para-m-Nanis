@@ -24,57 +24,13 @@
       position: relative;
     }
 
-    .sparkle {
-      position: absolute;
-      width: 6px;
-      height: 6px;
-      background-color: #FFF;
-      border-radius: 50%;
-      box-shadow: 0 0 10px #F5D061;
-      animation: sparkleAnim 3s infinite ease-in-out;
-      pointer-events: none;
-    }
-
-    @keyframes sparkleAnim {
-      0%, 100% { opacity: 0.2; transform: scale(0.8); }
-      50% { opacity: 1; transform: scale(1.4); }
-    }
-
-    .audio-container {
-      position: fixed;
-      top: 12px;
-      right: 12px;
-      z-index: 1000;
-      background: rgba(255, 255, 255, 0.92);
-      padding: 6px 10px;
-      border-radius: 20px;
-      border: 1px solid #F5D061;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .music-btn {
-      background-color: #FFE699;
-      border: 1px solid #F5D061;
-      color: #5A5030;
-      padding: 5px 10px;
-      font-size: 0.85rem;
-      font-weight: bold;
-      border-radius: 12px;
-      cursor: pointer;
-    }
-
     #step1 {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 25px;
       padding: 25px;
-      animation: fadeIn 1s ease-in-out;
       z-index: 2;
-      max-width: 90%;
     }
 
     h1 {
@@ -99,14 +55,7 @@
       font-weight: bold;
       border-radius: 25px;
       cursor: pointer;
-      transition: all 0.3s ease;
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      animation: pulse 2s infinite;
-    }
-
-    .btn:hover {
-      background-color: #FCE082;
-      transform: scale(1.08);
     }
 
     #step2 {
@@ -118,18 +67,6 @@
       height: 100vh;
       position: relative;
       cursor: pointer;
-      z-index: 2;
-    }
-
-    .instruction {
-      position: absolute;
-      top: 10%;
-      font-size: 1.2rem;
-      background-color: rgba(255, 253, 240, 0.9);
-      padding: 10px 20px;
-      border-radius: 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      animation: pulse 1.5s infinite;
     }
 
     .tree-container {
@@ -147,38 +84,23 @@
       background-color: #D2B48C;
       border-radius: 10px 10px 0 0;
       position: relative;
-      z-index: 1;
     }
-
-    .trunk::before, .trunk::after {
-      content: '';
-      position: absolute;
-      width: 12px;
-      height: 50px;
-      background-color: #D2B48C;
-      border-radius: 5px;
-    }
-    .trunk::before { top: 30px; left: -15px; transform: rotate(-35deg); }
-    .trunk::after { top: 20px; right: -15px; transform: rotate(35deg); }
 
     .heart-crown {
       position: absolute;
       top: 20px;
       width: 240px;
       height: 220px;
-      z-index: 2;
     }
 
     .heart-flower {
       position: absolute;
       font-size: 24px;
-      animation: float 3s ease-in-out infinite alternate;
     }
 
     .falling-flower {
       position: fixed;
       font-size: 26px;
-      user-select: none;
       pointer-events: none;
       z-index: 999;
       animation: fall 3s linear forwards;
@@ -189,47 +111,20 @@
       flex-direction: column;
       align-items: center;
       padding: 60px 20px 30px 20px;
-      min-height: 100vh;
       width: 100%;
-      z-index: 2;
     }
 
     .transform-container {
-      width: 140px;
-      height: 140px;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
-      position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
       margin-bottom: 25px;
-      transition: all 2.5s ease-in-out;
-      background: #A3C9A8;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
-      font-size: 70px;
-    }
-
-    .transform-container.sunflower {
       background: #F4C430;
-      transform: rotate(360deg) scale(1.15);
-      box-shadow: 0 0 30px #FCE082;
-    }
-
-    .interactive-section {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      width: 100%;
-      max-width: 500px;
-      align-items: center;
-    }
-
-    .decor-bouquets {
-      display: flex;
-      justify-content: space-around;
-      width: 100%;
-      font-size: 3rem;
-      margin-bottom: 5px;
+      font-size: 60px;
+      box-shadow: 0 0 25px #FCE082;
     }
 
     .bouquets-grid {
@@ -237,6 +132,7 @@
       flex-direction: column;
       gap: 15px;
       width: 100%;
+      max-width: 400px;
     }
 
     .flower-item {
@@ -248,49 +144,23 @@
       align-items: center;
       gap: 15px;
       cursor: pointer;
-      transition: all 0.4s ease;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.03);
-    }
-
-    .flower-item:hover {
-      transform: scale(1.02);
-      background-color: #FFF3B0;
-    }
-
-    .flower-icon {
-      font-size: 2.2rem;
-      animation: float 2s ease-in-out infinite alternate;
     }
 
     .flower-message {
       font-size: 1.05rem;
       font-weight: bold;
       color: #6B5B28;
-      text-align: left;
-      opacity: 0;
-      max-height: 0;
-      overflow: hidden;
-      transition: all 0.5s ease;
+      display: none;
     }
 
     .flower-item.revealed .flower-message {
-      opacity: 1;
-      max-height: 100px;
-    }
-
-    .click-hint {
-      font-size: 0.9rem;
-      color: #A39352;
-      font-style: italic;
+      display: block;
     }
 
     .flower-item.revealed .click-hint {
       display: none;
     }
 
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
-    @keyframes float { 0% { transform: translateY(0px); } 100% { transform: translateY(-6px); } }
     @keyframes fall {
       0% { opacity: 1; transform: translateY(0) rotate(0deg); }
       100% { opacity: 0; transform: translateY(100vh) rotate(360deg); }
@@ -299,12 +169,12 @@
 </head>
 <body>
 
-  <!-- Reproductor de Audio con Botón Manual de Respaldo -->
-      <audio loop id="bgAudio" preload="auto">
-      <source src="https://audio.jukehost.co/3s6Z1N6x9G0k8R4N7M8L" type="audio/mpeg">
-      <source src="From The Start.mp3" type="audio/mpeg">
-      </audio>
-  
+  <!-- Audio Oculto -->
+  <audio loop id="bgAudio" preload="auto">
+    <source src="From The Start.mp3" type="audio/mpeg">
+    <source src="from-the-start.mp3" type="audio/mpeg">
+    <source src="cancion.mp3" type="audio/mpeg">
+  </audio>
 
   <!-- PANTALLA 1 -->
   <div id="step1">
@@ -317,7 +187,7 @@
 
   <!-- PANTALLA 2 -->
   <div id="step2" onclick="burstFlowers()">
-    <div class="instruction">✨ Haz click en el corazón ✨</div>
+    <p style="position: absolute; top: 12%; font-size: 1.2rem; background: #FFF; padding: 8px 16px; border-radius: 20px;">✨ Haz click en el corazón ✨</p>
     <div class="tree-container">
       <div id="heartCrown" class="heart-crown"></div>
       <div class="trunk"></div>
@@ -326,85 +196,59 @@
 
   <!-- PANTALLA 3 -->
   <div id="step3">
-    <div id="planet" class="transform-container">🌍</div>
+    <div class="transform-container">🌻</div>
+    <div style="font-size: 2.5rem; margin-bottom: 15px;">🌻💐 💐🌼</div>
+    <p style="color: #7A6B32; font-weight: bold; margin-bottom: 15px;">Toca cada flor para descubrir un mensaje 💛</p>
 
-    <div class="interactive-section">
-      <div class="decor-bouquets">
-        <span title="Ramo de Girasoles">🌻💐</span>
-        <span title="Ramo de Flores Amarillas">💐🌼</span>
+    <div class="bouquets-grid">
+      <div class="flower-item" onclick="revealMessage(this)">
+        <span style="font-size: 2rem;">🌼</span>
+        <div>
+          <span class="click-hint">Tócame 👈</span>
+          <div class="flower-message">FELIZ DIA DE LAS FLORES AMARILLAS</div>
+        </div>
       </div>
 
-      <p style="color: #7A6B32; font-weight: 500;">Toca cada flor para descubrir un mensaje 💛</p>
-
-      <div class="bouquets-grid">
-        <div class="flower-item" onclick="revealMessage(this)">
-          <span class="flower-icon">🌼</span>
-          <div>
-            <span class="click-hint">Tócame 👈</span>
-            <div class="flower-message">FELIZ DIA DE LAS FLORES AMARILLAS</div>
-          </div>
+      <div class="flower-item" onclick="revealMessage(this)">
+        <span style="font-size: 2rem;">🌻</span>
+        <div>
+          <span class="click-hint">Tócame 👈</span>
+          <div class="flower-message">TE QUIEROOOOOOOOO</div>
         </div>
+      </div>
 
-        <div class="flower-item" onclick="revealMessage(this)">
-          <span class="flower-icon">🌻</span>
-          <div>
-            <span class="click-hint">Tócame 👈</span>
-            <div class="flower-message">TE QUIEROOOOOOOOO</div>
-          </div>
+      <div class="flower-item" onclick="revealMessage(this)">
+        <span style="font-size: 2rem;">🌼</span>
+        <div>
+          <span class="click-hint">Tócame 👈</span>
+          <div class="flower-message">ERES MUUUY TIERNAAAAA</div>
         </div>
+      </div>
 
-        <div class="flower-item" onclick="revealMessage(this)">
-          <span class="flower-icon">🌼</span>
-          <div>
-            <span class="click-hint">Tócame 👈</span>
-            <div class="flower-message">ERES MUUUY TIERNAAAAA</div>
-          </div>
+      <div class="flower-item" onclick="revealMessage(this)">
+        <span style="font-size: 2rem;">🌻</span>
+        <div>
+          <span class="click-hint">Tócame 👈</span>
+          <div class="flower-message">¿Eres muy linda lo sabías?</div>
         </div>
+      </div>
 
-        <div class="flower-item" onclick="revealMessage(this)">
-          <span class="flower-icon">🌻</span>
-          <div>
-            <span class="click-hint">Tócame 👈</span>
-            <div class="flower-message">¿Eres muy linda lo sabías?</div>
-          </div>
-        </div>
-
-        <div class="flower-item" onclick="revealMessage(this)">
-          <span class="flower-icon">🌼</span>
-          <div>
-            <span class="click-hint">Tócame 👈</span>
-            <div class="flower-message">Tus ojitos son hermosísimos</div>
-          </div>
+      <div class="flower-item" onclick="revealMessage(this)">
+        <span style="font-size: 2rem;">🌼</span>
+        <div>
+          <span class="click-hint">Tócame 👈</span>
+          <div class="flower-message">Tus ojitos son hermosísimos</div>
         </div>
       </div>
     </div>
   </div>
 
   <script>
-    for (let i = 0; i < 25; i++) {
-      const sparkle = document.createElement('div');
-      sparkle.className = 'sparkle';
-      sparkle.style.left = Math.random() * 100 + 'vw';
-      sparkle.style.top = Math.random() * 100 + 'vh';
-      sparkle.style.animationDelay = Math.random() * 3 + 's';
-      document.body.appendChild(sparkle);
-    }
-
-    function togglePlay() {
-      const audio = document.getElementById('bgAudio');
-      if (audio.paused) {
-        audio.play();
-      } else {
-        audio.pause();
-      }
-    }
-
     function startExperience() {
       const audio = document.getElementById('bgAudio');
       if (audio) {
-        audio.play().catch(e => console.log("Se requiere interacción manual"));
+        audio.play().catch(e => console.log("Audio iniciado por interacción"));
       }
-
       document.getElementById('step1').style.display = 'none';
       document.getElementById('step2').style.display = 'flex';
       buildHeartTree();
@@ -424,24 +268,19 @@
         const x = 16 * Math.pow(Math.sin(t), 3);
         const y = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
 
-        const posX = 110 + (x * 6.5);
-        const posY = 90 + (y * 6.5);
-
-        flower.style.left = `${posX}px`;
-        flower.style.top = `${posY}px`;
-        flower.style.animationDelay = `${Math.random() * 2}s`;
+        flower.style.left = `${110 + (x * 6.5)}px`;
+        flower.style.top = `${90 + (y * 6.5)}px`;
 
         heartCrown.appendChild(flower);
       }
     }
 
     let isExploding = false;
-
     function burstFlowers() {
       if (isExploding) return;
       isExploding = true;
 
-      for (let i = 0; i < 80; i++) {
+      for (let i = 0; i < 50; i++) {
         setTimeout(() => {
           const flower = document.createElement('div');
           flower.className = 'falling-flower';
@@ -449,26 +288,15 @@
           flower.innerHTML = icons[Math.floor(Math.random() * icons.length)];
           flower.style.left = Math.random() * 100 + 'vw';
           flower.style.top = '-50px';
-          flower.style.animationDuration = (Math.random() * 2 + 2) + 's';
           document.body.appendChild(flower);
-
           setTimeout(() => flower.remove(), 3000);
-        }, i * 30);
+        }, i * 40);
       }
 
       setTimeout(() => {
         document.getElementById('step2').style.display = 'none';
         document.getElementById('step3').style.display = 'flex';
-        startPlanetTransformation();
-      }, 2400);
-    }
-
-    function startPlanetTransformation() {
-      const planet = document.getElementById('planet');
-      setTimeout(() => {
-        planet.classList.add('sunflower');
-        planet.innerHTML = '🌻';
-      }, 500);
+      }, 2200);
     }
 
     function revealMessage(element) {
@@ -477,4 +305,3 @@
   </script>
 </body>
 </html>
-
