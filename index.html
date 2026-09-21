@@ -24,7 +24,6 @@
       position: relative;
     }
 
-    /* Partículas de brillo de fondo */
     .sparkle {
       position: absolute;
       width: 6px;
@@ -41,28 +40,32 @@
       50% { opacity: 1; transform: scale(1.4); }
     }
 
-    /* Reproductor de Audio Flotante */
     .audio-container {
       position: fixed;
-      top: 15px;
-      right: 15px;
+      top: 12px;
+      right: 12px;
       z-index: 1000;
-      background: rgba(255, 255, 255, 0.9);
-      padding: 8px 12px;
+      background: rgba(255, 255, 255, 0.92);
+      padding: 6px 10px;
       border-radius: 20px;
       border: 1px solid #F5D061;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
 
-    audio {
-      height: 30px;
-      max-width: 170px;
+    .music-btn {
+      background-color: #FFE699;
+      border: 1px solid #F5D061;
+      color: #5A5030;
+      padding: 5px 10px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      border-radius: 12px;
+      cursor: pointer;
     }
 
-    /* PANTALLA 1 */
     #step1 {
       display: flex;
       flex-direction: column;
@@ -106,7 +109,6 @@
       transform: scale(1.08);
     }
 
-    /* PANTALLA 2 */
     #step2 {
       display: none;
       flex-direction: column;
@@ -182,7 +184,6 @@
       animation: fall 3s linear forwards;
     }
 
-    /* PANTALLA 3 */
     #step3 {
       display: none;
       flex-direction: column;
@@ -287,7 +288,6 @@
       display: none;
     }
 
-    /* ANIMACIONES */
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
     @keyframes float { 0% { transform: translateY(0px); } 100% { transform: translateY(-6px); } }
@@ -299,17 +299,15 @@
 </head>
 <body>
 
-  <!-- Reproductor de Audio (Laufey - From The Start) -->
+  <!-- Reproductor de Audio con Botón Manual de Respaldo -->
   <div class="audio-container">
     <span>🎵</span>
-    <audio controls loop id="bgAudio" preload="auto" playsinline>
-      <!-- Opción 1: Tu archivo subido a GitHub (Asegúrate que el nombre en GitHub coincida) -->
+    <button class="music-btn" onclick="togglePlay()">Música ⏯️</button>
+    <audio loop id="bgAudio" preload="auto" playsinline>
       <source src="From The Start.mp3" type="audio/mpeg">
       <source src="from-the-start.mp3" type="audio/mpeg">
       <source src="cancion.mp3" type="audio/mpeg">
-      <!-- Opción 2: Respaldo online de la canción Laufey - From The Start -->
-      <source src="https://audio.com/starryyy/audio/from-the-start" type="audio/mpeg">
-      Tu navegador no soporta el reproductor.
+      <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3" type="audio/mpeg">
     </audio>
   </div>
 
@@ -388,7 +386,6 @@
   </div>
 
   <script>
-    // Generar destellos de fondo
     for (let i = 0; i < 25; i++) {
       const sparkle = document.createElement('div');
       sparkle.className = 'sparkle';
@@ -398,15 +395,19 @@
       document.body.appendChild(sparkle);
     }
 
+    function togglePlay() {
+      const audio = document.getElementById('bgAudio');
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
+    }
+
     function startExperience() {
-      // Activa y reproduce el audio inmediatamente tras presionar el botón de inicio
       const audio = document.getElementById('bgAudio');
       if (audio) {
-        audio.play().then(() => {
-          console.log("Audio reproduciéndose perfectamente");
-        }).catch((err) => {
-          console.log("Error de reproducción automática, intentando de nuevo:", err);
-        });
+        audio.play().catch(e => console.log("Se requiere interacción manual"));
       }
 
       document.getElementById('step1').style.display = 'none';
@@ -414,7 +415,6 @@
       buildHeartTree();
     }
 
-    // Dibujar el árbol con mezcla de Flores Amarillas y Girasoles
     function buildHeartTree() {
       const heartCrown = document.getElementById('heartCrown');
       const totalFlowers = 36;
@@ -482,3 +482,4 @@
   </script>
 </body>
 </html>
+
